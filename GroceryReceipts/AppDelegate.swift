@@ -12,10 +12,24 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+//    func applicationDidFinishLaunching(_ application: UIApplication) {
+//        let mainNavigationController = UINavigationController()
+//        let previewViewController = PreviewViewController()
+//        mainNavigationController.pushViewController(previewViewController, animated: true)
+//        
+//        window = UIWindow(frame: UIScreen.main.bounds)
+//        window!.rootViewController = mainNavigationController
+//        window?.makeKeyAndVisible()
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        let nav = UINavigationController()
+        let scannerViewController = ScannerViewController()
+        nav.pushViewController(scannerViewController, animated: true)
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = nav
+        window?.makeKeyAndVisible()
         return true
     }
 

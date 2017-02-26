@@ -12,23 +12,11 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
-//    func applicationDidFinishLaunching(_ application: UIApplication) {
-//        let mainNavigationController = UINavigationController()
-//        let previewViewController = PreviewViewController()
-//        mainNavigationController.pushViewController(previewViewController, animated: true)
-//        
-//        window = UIWindow(frame: UIScreen.main.bounds)
-//        window!.rootViewController = mainNavigationController
-//        window?.makeKeyAndVisible()
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        let nav = UINavigationController()
-        let scannerViewController = ScannerViewController()
-        nav.pushViewController(scannerViewController, animated: true)
+        let tabBarController = TabNavController()
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = nav
+        window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
         return true
     }

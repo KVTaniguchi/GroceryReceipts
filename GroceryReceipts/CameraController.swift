@@ -22,7 +22,6 @@ class CameraManager: NSObject, UIImagePickerControllerDelegate, UINavigationCont
     let tesseract = G8Tesseract(language: "eng")
     fileprivate let imagePickerController = UIImagePickerController()
     
-    
     fileprivate override init() {
         super.init()
         
@@ -31,13 +30,9 @@ class CameraManager: NSObject, UIImagePickerControllerDelegate, UINavigationCont
         imagePickerController.allowsEditing = false
         imagePickerController.sourceType = .camera
         imagePickerController.showsCameraControls = true
-        
-        
-        
-        print("MY ESS \(tesseract)")
     }
     
-    func handlePhotoOperation(title: String, presentingViewController: UIViewController) -> String? {
+    func handlePhotoOperation(title: String, presentingViewController: UIViewController) {
         checkCameraAuthAccess {[unowned self] (granted) in
             if granted && UIImagePickerController.isSourceTypeAvailable(.camera) {
                 DispatchQueue.main.async {
@@ -49,8 +44,6 @@ class CameraManager: NSObject, UIImagePickerControllerDelegate, UINavigationCont
                 presentingViewController.present(alertController, animated: true, completion: nil)
             }
         }
-        
-        return ""
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -63,24 +56,18 @@ class CameraManager: NSObject, UIImagePickerControllerDelegate, UINavigationCont
         tesseract?.image = image
         
         tesseract?.recognize()
-
-        print("******* \(tesseract)")
-        print("iage \(image)")
         
-        print("TEXT: \(tesseract?.recognizedText)")
+        if let text = tesseract?.recognizedText {
+            let separatedStrings = text.components(separatedBy: "\n").filter{!$0.isEmpty}
+            
+            for string in separatedStrings {
+                print("RESULT: \(string)")
+            }
+        }
         
-        
-        var aTesseract:G8Tesseract = G8Tesseract(language:"eng+ita")
-        
-        print(aTesseract)
-        
-        aTesseract.image = image
-        aTesseract.recognize()
-        print(aTesseract.recognizedText)
-        
-        print("*******")
-        
-        // TODO use a different OCR
+        picker.dismiss(animated: true) { 
+            
+        }
     }
     
     private func checkCameraAuthAccess(callBack: @escaping BoolCallback) {

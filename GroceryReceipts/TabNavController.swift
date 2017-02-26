@@ -8,6 +8,15 @@
 
 import UIKit
 
-class AppController {
+class TabNavController: UITabBarController {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let scanner = ScannerViewController()
+        let tabOne = UITabBarItem(title: "Scan", image: nil, selectedImage: nil)
+        scanner.tabBarItem = tabOne
+        
+        viewControllers = [scanner]
+    }
 }

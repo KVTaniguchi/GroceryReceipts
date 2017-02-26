@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "2704E755729C42BE051510D3473B4A5D511A04BC",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "2704E755729C42BE051510D3473B4A5D511A04BC" : 9223372036854775807,
+    "28E0ACC4D8A43B4935CDAD6DE47DD40A4FBF3D6A" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "1B74FF42-F680-4DD1-ABB2-AB6036BFD035",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "2704E755729C42BE051510D3473B4A5D511A04BC" : "GroceryReceipts\/",
+    "28E0ACC4D8A43B4935CDAD6DE47DD40A4FBF3D6A" : "GroceryReceipts\/GroceryReceipts\/tessdata\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "GroceryReceipts",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "GroceryReceipts.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:KVTaniguchi\/GroceryReceipts.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2704E755729C42BE051510D3473B4A5D511A04BC"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:tesseract-ocr\/tessdata.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "28E0ACC4D8A43B4935CDAD6DE47DD40A4FBF3D6A"
+    }
+  ]
+}

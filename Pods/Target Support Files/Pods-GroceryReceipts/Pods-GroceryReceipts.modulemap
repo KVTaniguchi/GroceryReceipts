@@ -1,6 +1,0 @@
-framework module Pods_GroceryReceipts {
-  umbrella header "Pods-GroceryReceipts-umbrella.h"
-
-  export *
-  module * { export * }
-}

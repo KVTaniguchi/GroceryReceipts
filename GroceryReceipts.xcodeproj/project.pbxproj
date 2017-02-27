@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DA51C29F5600054713514089 /* Pods_GroceryReceipts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75A5DC02515CE1F862EF9E45 /* Pods_GroceryReceipts.framework */; };
 		F614CD361E62636B0043FF5F /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = F614CD351E62636B0043FF5F /* tessdata */; };
+		F689150E1E63A4B9006812F0 /* SpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F689150D1E63A4B9006812F0 /* SpeechManager.swift */; };
 		F6B37CD21E5A091700977A24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B37CD11E5A091700977A24 /* AppDelegate.swift */; };
 		F6B37CD41E5A091700977A24 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B37CD31E5A091700977A24 /* ScannerViewController.swift */; };
 		F6B37CD91E5A091700977A24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6B37CD81E5A091700977A24 /* Assets.xcassets */; };
@@ -32,6 +33,7 @@
 		2B9827BAAD19D10C45B43EE4 /* Pods-GroceryReceipts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroceryReceipts.release.xcconfig"; path = "Pods/Target Support Files/Pods-GroceryReceipts/Pods-GroceryReceipts.release.xcconfig"; sourceTree = "<group>"; };
 		75A5DC02515CE1F862EF9E45 /* Pods_GroceryReceipts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GroceryReceipts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F614CD351E62636B0043FF5F /* tessdata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tessdata; sourceTree = "<group>"; };
+		F689150D1E63A4B9006812F0 /* SpeechManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechManager.swift; sourceTree = "<group>"; };
 		F6B37CCE1E5A091700977A24 /* GroceryReceipts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryReceipts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6B37CD11E5A091700977A24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6B37CD31E5A091700977A24 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			children = (
 				F6B37CD31E5A091700977A24 /* ScannerViewController.swift */,
 				F6B37CF41E5A0C4400977A24 /* CameraController.swift */,
+				F689150D1E63A4B9006812F0 /* SpeechManager.swift */,
 			);
 			name = Scanner;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6B37CD41E5A091700977A24 /* ScannerViewController.swift in Sources */,
+				F689150E1E63A4B9006812F0 /* SpeechManager.swift in Sources */,
 				F6B37CD21E5A091700977A24 /* AppDelegate.swift in Sources */,
 				F6B37CF51E5A0C4400977A24 /* CameraController.swift in Sources */,
 				F6B37CF21E5A0AB700977A24 /* TabNavController.swift in Sources */,

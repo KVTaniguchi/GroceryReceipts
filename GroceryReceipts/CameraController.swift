@@ -19,7 +19,8 @@ typealias BoolCallback = (Bool) -> ()
 
 class CameraManager: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate, G8TesseractDelegate {
     static let shared = CameraManager()
-    let tesseract = G8Tesseract(language: "eng")
+//    let tesseract = G8Tesseract(language: "eng")
+    let tesseractOp = G8RecognitionOperation(language: "eng")
     fileprivate let imagePickerController = UIImagePickerController()
     
     fileprivate override init() {
@@ -53,21 +54,24 @@ class CameraManager: NSObject, UIImagePickerControllerDelegate, UINavigationCont
         
         guard let imageKey = intersect.first, let image = info[imageKey] as? UIImage else { return }
         
-        tesseract?.image = image
+        tesseractOp?.tesseract.image = image
         
-        tesseract?.recognize()
-        
-        if let text = tesseract?.recognizedText {
-            let separatedStrings = text.components(separatedBy: "\n").filter{!$0.isEmpty}
-            
-            for string in separatedStrings {
-                print("RESULT: \(string)")
+        tesseractOp?.recognitionCompleteBlock = { recognizedTesseract in
+            if let text = recognizedTesseract?.recognizedText {
+                let separatedStrings = text.components(separatedBy: "\n").filter{!$0.isEmpty}
+                
+                for string in separatedStrings {
+                    print("RESULT: \(string)")
+                }
             }
         }
         
-        picker.dismiss(animated: true) { 
-            
+        let queue = OperationQueue()
+        if let op = tesseractOp {
+            queue.addOperation(op)
         }
+        
+        picker.dismiss(animated: true) {}
     }
     
     private func checkCameraAuthAccess(callBack: @escaping BoolCallback) {

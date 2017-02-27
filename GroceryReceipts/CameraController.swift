@@ -19,7 +19,6 @@ typealias BoolCallback = (Bool) -> ()
 
 class CameraManager: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate, G8TesseractDelegate {
     static let shared = CameraManager()
-//    let tesseract = G8Tesseract(language: "eng")
     let tesseractOp = G8RecognitionOperation(language: "eng")
     fileprivate let imagePickerController = UIImagePickerController()
     

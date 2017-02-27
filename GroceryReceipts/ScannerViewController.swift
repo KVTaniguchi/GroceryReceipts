@@ -57,12 +57,12 @@ class ScannerViewController: UIViewController {
            SpeechManager.shared.recognitionRequest?.endAudio()
         }
         else {
-           SpeechManager.shared.startRecording(completion: { (err) in
-                print("ERRR \(err)")
-           })
+            do {
+                try SpeechManager.shared.startRecording()
+            }
+            catch {
+                print("ERR: \(error)")
+            }
         }
     }
 }
-
-
-

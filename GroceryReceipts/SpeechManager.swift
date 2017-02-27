@@ -35,50 +35,49 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate {
         }
     }
     
-    func startRecording(completion: @escaping (Error?) -> Void ) {
+    func startRecording() throws {
         if recognitionTask != nil {
             recognitionTask?.cancel()
             recognitionTask = nil
         }
         
         let audioSession = AVAudioSession.sharedInstance()
-        do {
-            try audioSession.setCategory(AVAudioSessionCategoryRecord)
-            try audioSession.setMode(AVAudioSessionModeMeasurement)
-            try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
-        }
-        catch {
-            completion(error)
-        }
+        try audioSession.setCategory(AVAudioSessionCategoryRecord)
+        try audioSession.setMode(AVAudioSessionModeMeasurement)
+        try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
         
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
         
         guard let inputNode = audioEngine.inputNode else {
-            completion(SpeechErrors.noInputNode)
-            return
+            throw SpeechErrors.noInputNode
         }
         
         guard let recognitionRequest = recognitionRequest else {
-            completion(SpeechErrors.noRecognitionRequest)
-            return
+            throw SpeechErrors.noRecognitionRequest
         }
         
         recognitionRequest.shouldReportPartialResults = true
         
         recognitionTask = speechRecognizer?.recognitionTask(with: recognitionRequest, resultHandler: { [unowned self] (result, error) in
             
-            guard let result = result else {
-                if let err = error {
-                    self.audioEngine.stop()
-                    inputNode.removeTap(onBus: 0)
-                    self.recognitionRequest = nil
-                    self.recognitionTask = nil
-                    completion(err)
+            var isFinal = false
+            
+            if let result = result {
+                // TODO Process strings into model
+                print(result.bestTranscription.formattedString)
+                isFinal = result.isFinal
+                if result.isFinal {
+                    print("IS FINAL")
                 }
-                return
             }
             
-            print("REUSLT \(result.bestTranscription.formattedString)")
+            if error != nil || isFinal {
+                self.audioEngine.stop()
+                inputNode.removeTap(onBus: 0)
+                
+                self.recognitionRequest = nil
+                self.recognitionTask = nil
+            }
         })
         
         let recordingFormat = inputNode.outputFormat(forBus: 0)
@@ -88,13 +87,10 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate {
         
         audioEngine.prepare()
         
-        do {
-            try audioEngine.start()
-        }
-        catch {
-            completion(error)
-        }
+        try audioEngine.start()
     }
     
-    
+    func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
+        print("AVAIL CHANGE \(available)")
+    }
 }
